@@ -45,7 +45,7 @@ PROFILES = {
 }
 
 # Switch profiles by changing this one line:
-ACTIVE_PROFILE = "chill_listener"
+ACTIVE_PROFILE = "amateur_dancer"
 
 
 def main() -> None:
