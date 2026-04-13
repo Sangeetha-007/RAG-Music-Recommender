@@ -77,6 +77,14 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         "genre":        0.10,
     }
 
+    # weights = {
+    #     "energy":       0.60,
+    #     "acousticness": 0.25,
+    #     "tempo":        0.20,
+    #     "mood":         0.15,
+    #     "genre":        0.05,
+    # }
+
     # Normalize tempo to [0, 1] using the dataset range (54–178 BPM)
     TEMPO_MIN, TEMPO_MAX = 54, 178
     song_tempo_norm   = (song["tempo_bpm"]          - TEMPO_MIN) / (TEMPO_MAX - TEMPO_MIN)

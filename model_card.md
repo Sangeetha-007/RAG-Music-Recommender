@@ -1,15 +1,15 @@
 # 🎧 Model Card: Music Recommender Simulation
 
-## 1. Model Name  
+## 1. Model Name : MelodyMap 
 
-Give your model a short, descriptive name.  
+<!-- Give your model a short, descriptive name.  
 Example: **VibeFinder 1.0**  
 
----
+--- -->
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
+<!-- Describe what your recommender is designed to do and who it is for. 
 
 Prompts:  
 
@@ -17,11 +17,15 @@ Prompts:
 - What assumptions does it make about the user  
 - Is this for real users or classroom exploration  
 
----
+--- -->
+
+This model is supposed to recommend songs to user based on their preferences. It assumes that
+energy is the most important weight, and after that acousticness. This currently is not designed for real users (yet) and is for classroom exploration. 
+
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
+<!-- Explain your scoring approach in simple language.  
 
 Prompts:  
 
@@ -30,13 +34,22 @@ Prompts:
 - How does the model turn those into a score  
 - What changes did you make from the starter logic  
 
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+Avoid code here. Pretend you are explaining the idea to a friend who does not program. -->
 
----
+The datasets features include: id, title, artist, genre, mood, energy, tempo_bpm, valence,danceability, and acousticness. In a more real setting, I would need to use all the features and incorporate in a way of least bias. However, features with the weights used for this model are :
+    weights = {
+        "energy":       0.30,
+        "acousticness": 0.25,
+        "tempo":        0.20,
+        "mood":         0.15,
+        "genre":        0.10,
+    }
+
+Changes I made from the starter logic is, at first I had the user profiles as a dictionary within a dictionary and they all ran like a pytest. The terminal would say the tests passed, but it was useless for me. I had to change the code and make it in a way I can run one profile at a time. 
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
+<!-- Describe the dataset the model uses.  
 
 Prompts:  
 
@@ -45,11 +58,14 @@ Prompts:
 - Did you add or remove data  
 - Are there parts of musical taste missing in the dataset  
 
----
+--- -->
+
+There are 19 songs in the catalog. The genres represented are pop, lofi, rock, jazz, synthwave, indie pop, blues, hip-hop, country, r&b, metal, folk, electronic, classical, and latin. I added 9 songs. There are definitely parts of musical taste missing in this dataset because so many genres are not included like reggaeton, bollywood, kpop and rap. 
+
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
+<!-- Where does your system seem to work well  
 
 Prompts:  
 
@@ -57,7 +73,10 @@ Prompts:
 - Any patterns you think your scoring captures correctly  
 - Cases where the recommendations matched your intuition  
 
----
+--- -->
+
+The system works for basic music listeners. It gives reasonable results for pop music and casual listeners. The recommendations the model gave for all the user profiles created were successful. 
+
 
 ## 6. Limitations and Bias 
 
@@ -71,6 +90,25 @@ Prompts:
 - Ways the scoring might unintentionally favor some users  
 
 ---
+
+Claude helped me find weights that are the least biased as possible. However, there is still a lot of bias. According to Claude danceability should not be considered as a weight. As a trained dancer, songs danceability is important to me. So this model favors users who are not dancers and may not like to dance at all. The original weight I am using is:
+    weights = {
+        "energy":       0.30,
+        "acousticness": 0.25,
+        "tempo":        0.20,
+        "mood":         0.15,
+        "genre":        0.10,
+    }
+I doubled energy and halved genre to see the change in recommendations. The only slight change I noticed was in acousticness. This new weight is incorrect either way because it doesnt add up to 1. Also, giving too much value to energy is a biased approach because giving too much weight to one field makes it biased. 
+    weights = {
+         "energy":       0.60,
+         "acousticness": 0.25,
+         "tempo":        0.20,
+         "mood":         0.15,
+         "genre":        0.05,
+     }
+
+One of the model's limitations is how there is no "learning". Preferences are hardcoded. In the real world preferences change. Another limitation is how genres like "metal" and "rock" are treated as completely different. However, certain genres have similarities. 
 
 ## 7. Evaluation  
 
@@ -86,10 +124,11 @@ Prompts:
 No need for numeric metrics unless you created some.
 
 ---
+The user profiles I tested are "amateur dancer", "chill listener", "workout fan" and "late night". I looked to see if the recommendations seemed reasonable. The top recommendations for each profile was different. The amateur profile recommended "Hips Don't Lie" by Shakira, which I think is the right recommendation. The workout fan got "Neon Pulse", which is also correct because someone who uses the song for working out would need something upbeat. 
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
+<!-- Ideas for how you would improve the model next.  
 
 Prompts:  
 
@@ -98,14 +137,18 @@ Prompts:
 - Improving diversity among the top results  
 - Handling more complex user tastes  
 
----
+--- -->
+
+For future work, I would like to incorporate some Machine Learning so it can make predictions. Also, I would like to create very different user profiles and larger list of songs. 
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
+<!-- A few sentences about your experience.  
 
 Prompts:  
 
 - What you learned about recommender systems  
 - Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+- How this changed the way you think about music recommendation apps   -->
+
+I learned the importance of weights. There can be a lot of bias if you incorporate weights incorrectly. It has changed the way I think about the Data professionals who work in music streaming corporations because they will be working with extremely huge list of features and complex weights which change from time to time to recommend new songs. 

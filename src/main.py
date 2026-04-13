@@ -9,44 +9,69 @@ You will implement the functions in recommender.py:
 - recommend_songs
 """
 
+from tabulate import tabulate
 from recommender import load_songs, recommend_songs, score_song
+
+
+PROFILES = {
+    "chill_listener": {
+        "favorite_genres": ["lofi", "jazz"],
+        "favorite_moods":  ["chill", "relaxed"],
+        "target_energy":       0.40,
+        "target_acousticness": 0.80,
+        "target_tempo":        78,
+    },
+    "workout_fan": {
+        "favorite_genres": ["pop", "electronic"],
+        "favorite_moods":  ["intense", "euphoric"],
+        "target_energy":       0.90,
+        "target_acousticness": 0.05,
+        "target_tempo":        130,
+    },
+    "late_night": {
+        "favorite_genres": ["synthwave", "ambient"],
+        "favorite_moods":  ["moody", "dreamy"],
+        "target_energy":       0.55,
+        "target_acousticness": 0.40,
+        "target_tempo":        100,
+    },
+    "amateur_dancer": {
+        "favorite_genres": ["latin", "pop", "hip-hop"],
+        "favorite_moods":  ["playful", "happy"],
+        "target_energy":       0.80,
+        "target_acousticness": 0.10,
+        "target_tempo":        100,   # moderate — not too fast for a beginner
+    },
+}
+
+# Switch profiles by changing this one line:
+ACTIVE_PROFILE = "chill_listener"
 
 
 def main() -> None:
     songs = load_songs("data/songs.csv")
     print(f"Loaded {len(songs)} songs.\n")
 
-    # Starter example profile
-    # user_prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
-
-    user_prefs = {
-    "favorite_genres": ["lofi", "jazz"],   # list instead of single value
-    "favorite_moods":  ["chill", "relaxed"],
-    "target_energy":       0.40,
-    "target_acousticness": 0.80,
-    "target_tempo":        78,             # add this
-    # drop valence & danceability, or add weights:
-    "weights": {
-        "energy": 0.35,
-        "acousticness": 0.35,
-        "tempo": 0.20,
-        "genre": 0.05,
-        "mood": 0.05,
-    }
-}
+    user_prefs = PROFILES[ACTIVE_PROFILE]
+    print(f"Active profile: {ACTIVE_PROFILE}\n")
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    print("\n" + "=" * 50)
-    print(" TOP RECOMMENDATIONS")
-    print("=" * 50)
+    rows = []
     for i, (song, score, explanation) in enumerate(recommendations, start=1):
-        print(f"\n#{i}  {song['title']}  —  {song['artist']}")
-        print(f"    Score : {score:.2f}")
-        print(f"    Genre : {song['genre']}  |  Mood: {song['mood']}")
-        for reason in explanation.split(" | "):
-            print(f"    • {reason}")
-    print("\n" + "=" * 50)
+        reasons = "\n".join(f"• {r}" for r in explanation.split(" | "))
+        rows.append([
+            f"#{i}",
+            song["title"],
+            song["artist"],
+            song["genre"],
+            song["mood"],
+            f"{score:.2f}",
+            reasons,
+        ])
+
+    headers = ["Rank", "Title", "Artist", "Genre", "Mood", "Score", "Reasons"]
+    print("\n" + tabulate(rows, headers=headers, tablefmt="rounded_grid"))
 
 
 if __name__ == "__main__":
