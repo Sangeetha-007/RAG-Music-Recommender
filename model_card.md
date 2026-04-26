@@ -1,6 +1,6 @@
 # 🎧 Model Card: Music Recommender Simulation
 
-## 1. Model Name : MelodyMap 
+## 1. Model Name : Vinyl Vibes (RAG Music Recommender)
 
 <!-- Give your model a short, descriptive name.  
 Example: **VibeFinder 1.0**  
@@ -20,7 +20,7 @@ Prompts:
 --- -->
 
 This model is supposed to recommend songs to user based on their preferences. It assumes that
-energy is the most important weight, and after that acousticness. This currently is not designed for real users (yet) and is for classroom exploration. 
+energy is the most important weight, and after that acousticness. This currently is designed for real users, which is why it will be hosted on Streamlit. 
 
 
 ## 3. How the Model Works  
@@ -80,7 +80,7 @@ The system works for basic music listeners. It gives reasonable results for pop 
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
+<!-- Where the system struggles or behaves unfairly. 
 
 Prompts:  
 
@@ -89,7 +89,7 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
----
+--- -->
 
 Claude helped me find weights that are the least biased as possible. However, there is still a lot of bias. According to Claude danceability should not be considered as a weight. As a trained dancer, songs danceability is important to me. So this model favors users who are not dancers and may not like to dance at all. The original weight I am using is:
     weights = {
@@ -112,7 +112,7 @@ One of the model's limitations is how there is no "learning". Preferences are ha
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+<!-- How you checked whether the recommender behaved as expected. 
 
 Prompts:  
 
@@ -121,7 +121,7 @@ Prompts:
 - What surprised you  
 - Any simple tests or comparisons you ran  
 
-No need for numeric metrics unless you created some.
+No need for numeric metrics unless you created some. -->
 
 ---
 The user profiles I tested are "amateur dancer", "chill listener", "workout fan" and "late night". I looked to see if the recommendations seemed reasonable. The top recommendations for each profile was different. The amateur profile recommended "Hips Don't Lie" by Shakira, which I think is the right recommendation. The workout fan got "Neon Pulse", which is also correct because someone who uses the song for working out would need something upbeat. 

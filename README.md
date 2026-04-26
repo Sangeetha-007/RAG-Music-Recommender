@@ -255,3 +255,41 @@ A few sentences about what you learned:
 
 ![User4](images/final%20workout%20fan.png)
 
+
+## Title and Summary: What your project does and why it matters.
+## Architecture Overview: A short explanation of your system diagram.
+## Setup Instructions: Step-by-step directions to run your code.
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate      # Mac or Linux
+   .venv\Scripts\activate         # Windows
+
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the app:
+
+```bash
+python -m src.main
+```
+
+
+pip install google-genai
+
+You can run the following code in terminal to test if Gemini works: 
+python -c "
+from google import genai
+from dotenv import load_dotenv
+import os
+load_dotenv()
+client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+response = client.models.generate_content(model='gemini-2.0-flash', contents='Say hello')
+print(response.text)
+"
+
+## Sample Interactions: Include at least 2-3 examples of inputs and the resulting AI outputs to demonstrate the system is functional.
+## Design Decisions: Why you built it this way, and what trade-offs you made.
+## Testing Summary: What worked, what didn't, and what you learned.
+## Reflection: What this project taught you about AI and problem-solving.
