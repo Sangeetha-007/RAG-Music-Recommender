@@ -5,16 +5,15 @@ from google import genai
 
 load_dotenv()
 
-def _get_api_key() -> str:
-    try:
-        import streamlit as st
-        return st.secrets["GEMINI_API_KEY"]
-    except Exception:
-        return os.getenv("GEMINI_API_KEY", "")
-
 from recommender import load_songs, recommend_songs
 
-client = genai.Client(api_key=_get_api_key())
+def _get_client():
+    try:
+        import streamlit as st
+        api_key = st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        api_key = os.getenv("GEMINI_API_KEY", "")
+    return genai.Client(api_key=api_key)
 
 
 def select_profile(user_message: str, profiles: dict) -> str:
@@ -36,7 +35,7 @@ User message: "{user_message}"
 
 Profile name:"""
 
-    response = client.models.generate_content(
+    response = _get_client().models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
     )
@@ -78,7 +77,7 @@ Here are their top song recommendations:
 Write a short, friendly response (3-5 sentences) recommending these songs and explaining why they fit the user's mood.
 Do not add any songs that are not in the list above."""
 
-    response = client.models.generate_content(
+    response = _get_client().models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
     )
