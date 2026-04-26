@@ -2,11 +2,19 @@ import os
 from typing import List, Dict, Tuple
 from dotenv import load_dotenv
 from google import genai
-from recommender import load_songs, recommend_songs
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+def _get_api_key() -> str:
+    try:
+        import streamlit as st
+        return st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        return os.getenv("GEMINI_API_KEY", "")
+
+from recommender import load_songs, recommend_songs
+
+client = genai.Client(api_key=_get_api_key())
 
 
 def select_profile(user_message: str, profiles: dict) -> str:
