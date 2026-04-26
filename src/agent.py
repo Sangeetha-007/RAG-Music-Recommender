@@ -2,6 +2,7 @@ import os
 from typing import List, Dict, Tuple
 from dotenv import load_dotenv
 from google import genai
+from google.genai import errors as genai_errors
 
 load_dotenv()
 
@@ -23,6 +24,29 @@ def _get_client():
     return _client
 
 
+def _call_gemini(prompt: str) -> str:
+    global _client
+    try:
+        return _get_client().models.generate_content(
+            model="gemini-2.5-flash-lite",
+            contents=prompt
+        ).text.strip()
+    except genai_errors.ClientError as e:
+        code = getattr(e, "status_code", 0)
+        if code == 429:
+            raise RuntimeError("Gemini quota exceeded. Please try again later.")
+        elif code in (401, 403):
+            raise RuntimeError("Invalid API key. Check your GEMINI_API_KEY.")
+        elif code == 404:
+            raise RuntimeError("Gemini model not found. Check the model name in agent.py.")
+        raise RuntimeError(f"Gemini API error ({code}): {e}")
+    except Exception as e:
+        if "client has been closed" in str(e).lower():
+            _client = None
+            raise RuntimeError("Connection was reset. Please try again.")
+        raise RuntimeError(f"Unexpected error: {e}")
+
+
 def select_profile(user_message: str, profiles: dict) -> str:
     """Ask Gemini to pick the best profile name for the user's mood."""
     profile_summary = "\n".join(
@@ -42,11 +66,7 @@ User message: "{user_message}"
 
 Profile name:"""
 
-    response = _get_client().models.generate_content(
-        model="gemini-2.5-flash-lite",
-        contents=prompt
-    )
-    return response.text.strip()
+    return _call_gemini(prompt)
 
 
 def get_recommendations(
@@ -84,8 +104,4 @@ Here are their top song recommendations:
 Write a short, friendly response (3-5 sentences) recommending these songs and explaining why they fit the user's mood.
 Do not add any songs that are not in the list above."""
 
-    response = _get_client().models.generate_content(
-        model="gemini-2.5-flash-lite",
-        contents=prompt
-    )
-    return response.text.strip()
+    return _call_gemini(prompt)

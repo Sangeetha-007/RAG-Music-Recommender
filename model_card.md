@@ -139,7 +139,7 @@ Prompts:
 
 --- -->
 
-For future work, I would like to incorporate some Machine Learning so it can make predictions. Also, I would like to create very different user profiles and larger list of songs. 
+Currently, a csv of songs is stored under 'data/songs.csv'. My future goals of this application is to either incorporate Spotify API for songs or use a vector database of songs. 
 
 ## 9. Personal Reflection  
 

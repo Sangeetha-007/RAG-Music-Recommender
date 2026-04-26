@@ -16,19 +16,23 @@ def run():
         if user_message.lower() == "quit":
             break
 
-        print("\nFinding your profile...")
-        profile_name = select_profile(user_message, PROFILES)
+        try:
+            print("\nFinding your profile...")
+            profile_name = select_profile(user_message, PROFILES)
 
-        if profile_name not in PROFILES:
-            print(f"Could not match a profile. Got: '{profile_name}'\n")
-            continue
+            if profile_name not in PROFILES:
+                print(f"Could not match a profile. Got: '{profile_name}'\n")
+                continue
 
-        print(f"Matched profile: {profile_name}")
-        print("Fetching recommendations...\n")
-        _, results = get_recommendations(profile_name, PROFILES, SONGS_PATH)
+            print(f"Matched profile: {profile_name}")
+            print("Fetching recommendations...\n")
+            _, results = get_recommendations(profile_name, PROFILES, SONGS_PATH)
 
-        response = format_response(user_message, profile_name, results)
-        print(f"\n{response}\n")
+            response = format_response(user_message, profile_name, results)
+            print(f"\n{response}\n")
+
+        except RuntimeError as e:
+            print(f"\nError: {e}\n")
 
 
 if __name__ == "__main__":
