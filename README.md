@@ -259,7 +259,8 @@ A few sentences about what you learned:
 ## Vinyl Vibes: RAG Music Recommender
 <!-- Title and Summary: What your project does and why it matters. -->
 ## Architecture Overview: A short explanation of your system diagram.
-![UML](images/RAG Diagram.png)
+![UML](images/RAG%Diagram.png)
+
 ## Setup Instructions: Step-by-step directions to run your code.
    ```bash
    python -m venv .venv
@@ -291,10 +292,21 @@ response = client.models.generate_content(model='gemini-2.5-flash-lite', content
 print(response.text)
 "
 
-## Sample Interactions: Include at least 2-3 examples of inputs and the resulting AI outputs to demonstrate the system is functional.
-![Chat](images/screenshotOfChat.png)
+## Sample Interactions: 
+<!-- Include at least 2-3 examples of inputs and the resulting AI outputs to demonstrate the system is functional. -->
+
+![Chat](diagrams/screenshotOfChat.png)
+
+![WebPage](diagrams/vinylvibes.png)
+
+![WebPage2](diagrams/WebReply.png)
+
+
 
 ## Design Decisions: Why you built it this way, and what trade-offs you made.
 
 ## Testing Summary: What worked, what didn't, and what you learned.
+
 ## Reflection: What this project taught you about AI and problem-solving.
+
+## Future Work

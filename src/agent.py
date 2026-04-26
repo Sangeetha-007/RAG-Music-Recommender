@@ -7,13 +7,20 @@ load_dotenv()
 
 from recommender import load_songs, recommend_songs
 
+_client = None
+
 def _get_client():
-    try:
-        import streamlit as st
-        api_key = st.secrets["GEMINI_API_KEY"]
-    except Exception:
-        api_key = os.getenv("GEMINI_API_KEY", "")
-    return genai.Client(api_key=api_key)
+    # _get_client() creates a new client on every call, and the previous one gets closed. 
+    # Fix: cache it so it's only created once.
+    global _client
+    if _client is None:
+        try:
+            import streamlit as st
+            api_key = st.secrets["GEMINI_API_KEY"]
+        except Exception:
+            api_key = os.getenv("GEMINI_API_KEY", "")
+        _client = genai.Client(api_key=api_key)
+    return _client
 
 
 def select_profile(user_message: str, profiles: dict) -> str:
