@@ -261,7 +261,7 @@ A few sentences about what you learned:
 ## Architecture Overview: A short explanation of your system diagram.
 Diagram of my RAG Recommender System:
 
-![UML](diagrams/RAG%Diagram.png)
+![UML](diagrams/RAG%20Diagram.png)
 
 RAG: Retrieval Augmented Generation
 
@@ -276,16 +276,18 @@ RAG: Retrieval Augmented Generation
 pip install -r requirements.txt
 ```
 
-3. Run the app:
-
-```bash
-python -m src.main
-```
-
 ```bash
 pip install google-genai
 ```
-You can run the following code in terminal to test if Gemini works: 
+
+Run the app:
+
+```bash
+python src/chat.py
+```
+
+
+<!-- You can run the following code in terminal to test if Gemini works: 
 python -c "
 from google import genai
 from dotenv import load_dotenv
@@ -294,7 +296,7 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 response = client.models.generate_content(model='gemini-2.5-flash-lite', contents='Say hello')
 print(response.text)
-"
+" -->
 
 ## Sample Interactions: 
 <!-- Include at least 2-3 examples of inputs and the resulting AI outputs to demonstrate the system is functional. -->
@@ -317,7 +319,10 @@ I wanted to build a music recommender system using RAG. I chose to make a web ap
 <!-- What worked, what didn't, and what you learned. -->
 Five automated tests in `tests/test_recommender.py` cover the core scoring and retrieval logic. All five pass consistently.
 
+I have created:
+Automated tests — tests/test_recommender.py has 5 tests covering score_song() and recommend_songs() with edge cases (contradictory profiles, out-of-range tempo, unknown genres, empty lists).
 
+Error handling — _call_gemini() in agent.py catches and classifies 429, 401/403, 404, and connection errors with clean messages. chat.py catches RuntimeError and loops instead of crashing.
 
 **What worked:** The scoring pipeline handled edge cases well — conflicting profiles, out-of-range tempo values, unknown genres, and empty preference lists all returned valid results without crashing.
 
@@ -331,5 +336,11 @@ Five automated tests in `tests/test_recommender.py` cover the core scoring and r
 
 This project taught me how guardrails are important. Although I am just recommending music in this particular project; LLMs being released should have multiple guardrails. 
 
+## Demo/Video:
+
+https://www.loom.com/share/af860cbe77cb426fbdc17566daa019af
+
 ## Future Work
 Currently, a csv of songs is stored under 'data/songs.csv'. My future goals of this application is to either incorporate Spotify API for songs or use a vector database of songs. 
+
+
