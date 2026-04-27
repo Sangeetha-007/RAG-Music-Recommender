@@ -340,7 +340,12 @@ This project taught me how guardrails are important. Although I am just recommen
 
 https://www.loom.com/share/af860cbe77cb426fbdc17566daa019af
 
+## Link:
+
+https://vinylvibes.streamlit.app/
+
 ## Future Work
-Currently, a csv of songs is stored under 'data/songs.csv'. My future goals of this application is to either incorporate Spotify API for songs or use a vector database of songs. 
+Currently, a csv of songs is stored under 'data/songs.csv'. My future goals of this application is to either incorporate Spotify API for songs or use a vector database of songs. Additionally,
+I want to add more guardrails and more error handling. 
 
 

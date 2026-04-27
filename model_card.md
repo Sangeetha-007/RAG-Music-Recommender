@@ -125,6 +125,21 @@ No need for numeric metrics unless you created some. -->
 
 ---
 <!-- The user profiles I tested are "amateur dancer", "chill listener", "workout fan" and "late night". I looked to see if the recommendations seemed reasonable. The top recommendations for each profile was different. The amateur profile recommended "Hips Don't Lie" by Shakira, which I think is the right recommendation. The workout fan got "Neon Pulse", which is also correct because someone who uses the song for working out would need something upbeat.  -->
+Guardrails Implemented:
+- Error handling guardrails (agent.py — _call_gemini())
+
+429 → quota exceeded message
+401/403 → invalid API key message
+404 → model not found message
+Client closed → resets the client and prompts retry
+
+- Profile validation guardrail (chat.py and app.py)
+
+If Gemini returns something that isn't a valid profile key, the app catches it and skips instead of crashing
+
+- Hallucination guardrail (agent.py — format_response prompt)
+
+The prompt explicitly tells Gemini: "Do not add any songs that are not in the list above" — prevents Gemini from inventing songs outside your CSV results
 
 ## 8. Future Work  
 
@@ -151,4 +166,6 @@ Prompts:
 - Something unexpected or interesting you discovered  
 - How this changed the way you think about music recommendation apps   -->
 
-I learned the importance of weights. There can be a lot of bias if you incorporate weights incorrectly. It has changed the way I think about the Data professionals who work in music streaming corporations because they will be working with extremely huge list of features and complex weights which change from time to time to recommend new songs. 
+I learned the importance of guardrails from this project. I hope to add more guardrails in the project and future projects. I also learned how it is easy to release an application without thinking of the harm it can cause without guardrails. 
+
+<!-- There can be a lot of bias if you incorporate weights incorrectly. It has changed the way I think about the Data professionals who work in music streaming corporations because they will be working with extremely huge list of features and complex weights which change from time to time to recommend new songs.  -->
