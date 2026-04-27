@@ -18,3 +18,34 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
 17,Neon Pulse,Circuit Bloom,electronic,euphoric,0.89,128,0.88,0.94,0.04
 18,Moonlit Sonata,Clara Voss,classical,dreamy,0.24,54,0.62,0.28,0.97
 19,Hips Don't Lie,Shakira,latin,playful,0.88,100,0.87,0.93,0.09
+20,Weightless,Marconi Union,ambient,relaxed,0.22,65,0.58,0.32,0.95
+21,Breezin,George Benson,jazz,relaxed,0.38,76,0.72,0.58,0.82
+22,Blinding Lights,The Weeknd,synthwave,moody,0.80,171,0.57,0.51,0.00
+23,Levitating,Dua Lipa,pop,euphoric,0.83,103,0.91,0.70,0.07
+24,HUMBLE.,Kendrick Lamar,hip-hop,confident,0.90,150,0.43,0.90,0.06
+25,Shape of You,Ed Sheeran,pop,happy,0.82,96,0.93,0.83,0.08
+26,Good 4 U,Olivia Rodrigo,rock,angry,0.88,167,0.66,0.55,0.06
+27,Dynamite,BTS,pop,happy,0.80,114,0.74,0.75,0.06
+28,Dance Monkey,Tones and I,indie pop,playful,0.82,98,0.74,0.83,0.09
+29,Heat Waves,Glass Animals,indie pop,dreamy,0.62,88,0.84,0.58,0.14
+30,Con Calma,Daddy Yankee,latin,playful,0.92,95,0.88,0.91,0.08
+31,Titanium,David Guetta,electronic,intense,0.86,126,0.48,0.61,0.05
+32,Cruel Summer,Taylor Swift,synthwave,intense,0.73,170,0.67,0.55,0.07
+33,Anti-Hero,Taylor Swift,pop,moody,0.63,97,0.59,0.66,0.12
+34,Flowers,Miley Cyrus,pop,happy,0.76,123,0.83,0.73,0.20
+35,As It Was,Harry Styles,pop,melancholic,0.73,174,0.66,0.52,0.06
+36,Industry Baby,Lil Nas X,hip-hop,euphoric,0.88,150,0.72,0.77,0.04
+37,Golden Hour,JVKE,pop,romantic,0.60,124,0.90,0.65,0.38
+38,Watermelon Sugar,Harry Styles,pop,happy,0.80,95,0.92,0.83,0.11
+39,Take Five,Dave Brubeck,jazz,chill,0.32,90,0.55,0.44,0.90
+40,Come Away With Me,Norah Jones,jazz,romantic,0.26,82,0.68,0.45,0.95
+41,Stressed Out,Twenty One Pilots,indie pop,moody,0.69,169,0.38,0.62,0.10
+42,Lose Yourself,Eminem,hip-hop,intense,0.93,86,0.26,0.73,0.12
+43,Run the World,Beyonce,pop,confident,0.88,127,0.55,0.90,0.07
+44,Calm Down,Rema,r&b,happy,0.72,107,0.88,0.87,0.11
+45,Ella Baila Sola,Eslabon Armado,latin,romantic,0.68,95,0.78,0.78,0.42
+46,Peaches,Justin Bieber,r&b,relaxed,0.52,90,0.82,0.68,0.28
+47,Sunflower,Post Malone,hip-hop,happy,0.49,90,0.84,0.76,0.48
+48,Starboy,The Weeknd,r&b,moody,0.74,93,0.42,0.74,0.10
+49,Midnight City,M83,synthwave,dreamy,0.72,105,0.60,0.55,0.10
+50,Don't Stop Me Now,Queen,rock,euphoric,0.87,156,0.97,0.65,0.08

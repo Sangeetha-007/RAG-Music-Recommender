@@ -60,7 +60,7 @@ Prompts:
 
 --- -->
 
-There are 19 songs in the catalog. The genres represented are pop, lofi, rock, jazz, synthwave, indie pop, blues, hip-hop, country, r&b, metal, folk, electronic, classical, and latin. I added 9 songs. There are definitely parts of musical taste missing in this dataset because so many genres are not included like reggaeton, bollywood, kpop and rap. 
+There are 50 songs in the catalog. The genres represented are pop, lofi, rock, jazz, synthwave, indie pop, blues, hip-hop, country, r&b, metal, folk, electronic, classical, latin, and ambient. The songs listed can be broken up into more detailed categories like kpop for BTS. There are definitely parts of musical taste missing in this dataset because so many genres are not included like bollywood and rap. 
 
 
 ## 5. Strengths  
@@ -108,7 +108,7 @@ I doubled energy and halved genre to see the change in recommendations. The only
          "genre":        0.05,
      }
 
-One of the model's limitations is how there is no "learning". Preferences are hardcoded. In the real world preferences change. Another limitation is how genres like "metal" and "rock" are treated as completely different. However, certain genres have similarities. 
+There is no confidence scoring implemented currently. That will be part of future work. 
 
 ## 7. Evaluation  
 
@@ -124,7 +124,7 @@ Prompts:
 No need for numeric metrics unless you created some. -->
 
 ---
-The user profiles I tested are "amateur dancer", "chill listener", "workout fan" and "late night". I looked to see if the recommendations seemed reasonable. The top recommendations for each profile was different. The amateur profile recommended "Hips Don't Lie" by Shakira, which I think is the right recommendation. The workout fan got "Neon Pulse", which is also correct because someone who uses the song for working out would need something upbeat. 
+<!-- The user profiles I tested are "amateur dancer", "chill listener", "workout fan" and "late night". I looked to see if the recommendations seemed reasonable. The top recommendations for each profile was different. The amateur profile recommended "Hips Don't Lie" by Shakira, which I think is the right recommendation. The workout fan got "Neon Pulse", which is also correct because someone who uses the song for working out would need something upbeat.  -->
 
 ## 8. Future Work  
 

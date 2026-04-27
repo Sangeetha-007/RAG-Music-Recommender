@@ -1,4 +1,4 @@
-# 🎵 Music Recommender Simulation
+<!-- # 🎵 Music Recommender Simulation
 
 ## Project Summary
 
@@ -253,13 +253,14 @@ A few sentences about what you learned:
 
 ![User3](images/final%20late%20night.png)
 
-![User4](images/final%20workout%20fan.png)
+![User4](images/final%20workout%20fan.png) -->
 
 
-## Vinyl Vibes: RAG Music Recommender
+## Vinyl Vibes: RAG Music Recommender 🎵 
 <!-- Title and Summary: What your project does and why it matters. -->
 ## Architecture Overview: A short explanation of your system diagram.
 Diagram of my RAG Recommender System:
+
 ![UML](diagrams/RAG%Diagram.png)
 
 RAG: Retrieval Augmented Generation
@@ -306,17 +307,21 @@ print(response.text)
 
 ![WebPage3](diagrams/explanation.png)
 
+![Chat2](diagrams/danceChat.png)
+
 ## Design Decisions: 
 <!-- Why you built it this way, and what trade-offs you made. -->
-I wanted to build a recommender system using RAG. I chose to make a web application (using Streamlit) so it would be user friendly. This would allow non-technical users to be comfortable, rather than making them run it through the command line. 
+I wanted to build a music recommender system using RAG. I chose to make a web application (using Streamlit) so it would be user friendly. This would allow non-technical users to be comfortable, rather than making them run it through the command line. 
 
 ## Testing Summary: 
 <!-- What worked, what didn't, and what you learned. -->
 Five automated tests in `tests/test_recommender.py` cover the core scoring and retrieval logic. All five pass consistently.
 
+
+
 **What worked:** The scoring pipeline handled edge cases well — conflicting profiles, out-of-range tempo values, unknown genres, and empty preference lists all returned valid results without crashing.
 
-**What didn't:** Early Gemini integration was blocked by API quota limits on the free tier. Switching models (`gemini-2.0-flash` → `gemini-2.5-flash-lite`) and adding error guardrails resolved this.
+**What didn't:** Early Gemini integration was blocked by API quota limits on the free tier. Switching models (`gemini-2.0-flash` → `gemini-2.5-flash-lite`) and adding error guardrails resolved this. This was the most challenginy part of the project for me. 
 
 **What I learned:** Testing the rule-based retrieval layer independently from the AI layer made debugging much easier. When Gemini failed, the recommender still worked — which confirmed the two layers were properly separated.
 
