@@ -348,4 +348,7 @@ https://vinylvibes.streamlit.app/
 Currently, a csv of songs is stored under 'data/songs.csv'. My future goals of this application is to either incorporate Spotify API for songs or use a vector database of songs. Additionally,
 I want to add more guardrails and more error handling. 
 
+## Note to User:
+If the Vinyl Vibes Streamlit application is not working, please download and use the terminal chat!
+
 
